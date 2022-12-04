@@ -30,7 +30,7 @@ To run the cloned repository;
 
 ## GitHub Commit 
 
->`git add README.md`
->`git commit -m "first commit"`
->`git branch -M main`
->`git push -u origin main`
+- `git add README.md`
+- `git commit -m "first commit"`
+- `git branch -M main`
+- `git push -u origin main`

@@ -25,8 +25,8 @@
 	<div [ngbCollapse]="showMore">
         <h3><fa-icon icon="info-circle"></fa-icon> Using SSH with Docker</h3>
         <p>
-            Here are detailed instruction when using the JHipster Registry Docker image, available at
-            <a href="https://hub.docker.com/r/jhipster/jhipster-registry/" target="_blank">jhipster/jhipster-registry/</a>.
+            Here are detailed instruction when using the Registry Docker image, available at
+            <a href="https://hub.docker.com/repository/docker/data2ml/registry-service/" target="_blank">data2ml/registry-service/</a>.
         </p>
 
         <ul>
@@ -53,13 +53,13 @@
     version: '2'
       services:
         jhipster-registry:
-          container_name: jhipster-registry
-          image: jhipster/jhipster-registry
+          container_name: registry-service
+          image: data2ml/registry-service
       volumes:
         - ./ssh/:/root/.ssh/
       environment:
         - SPRING_PROFILES_ACTIVE=prod
-        - GIT_URI=git@github.com:jhipster/jhipster-registry.git
+        - GIT_URI=git@github.com:nuruzzaman/registry-service.git
         - GIT_SEARCH_PATHS=central-config
       ports:
         - 8761:8761

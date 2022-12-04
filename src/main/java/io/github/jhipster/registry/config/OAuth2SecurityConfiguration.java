@@ -90,7 +90,7 @@ public class OAuth2SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .disable()
         .and()
             .httpBasic()
-            .realmName("JHipster Registry")
+            .realmName("Registry Service")
         .and()
             .authorizeRequests()
             .antMatchers("/services/**").authenticated()
