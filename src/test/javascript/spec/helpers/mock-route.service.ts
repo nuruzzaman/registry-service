@@ -1,3 +1,36 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a0603ba98372aeb748f1d96fc933147efdb965a65d11562a7fabdfc5a4651e90
-size 830
+import { ActivatedRoute, Router } from '@angular/router';
+import { SpyObject } from './spyobject';
+import { Observable, of } from 'rxjs';
+import Spy = jasmine.Spy;
+
+export class MockActivatedRoute extends ActivatedRoute {
+  constructor(parameters?: any) {
+    super();
+    this.queryParams = of(parameters);
+    this.params = of(parameters);
+    this.data = of({
+      ...parameters,
+      pagingParams: {
+        page: 10,
+        ascending: false,
+        predicate: 'id'
+      }
+    });
+  }
+}
+
+export class MockRouter extends SpyObject {
+  navigateSpy: Spy;
+  navigateByUrlSpy: Spy;
+  events: Observable<any>;
+
+  constructor() {
+    super(Router);
+    this.navigateSpy = this.spy('navigate');
+    this.navigateByUrlSpy = this.spy('navigateByUrl');
+  }
+
+  setRouterEvent(event: Observable<any>) {
+    this.events = event;
+  }
+}

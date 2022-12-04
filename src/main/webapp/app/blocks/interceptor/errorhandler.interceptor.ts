@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a0452838deef24edee2f751f5f8a43e85cd573b38413ee8fb8c33b75352500df
-size 913
+import { Injectable } from '@angular/core';
+import { JhiEventManager } from 'ng-jhipster';
+import { HttpInterceptor, HttpRequest, HttpErrorResponse, HttpHandler, HttpEvent } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+
+@Injectable()
+export class ErrorHandlerInterceptor implements HttpInterceptor {
+  constructor(private eventManager: JhiEventManager) {}
+
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    return next.handle(request).pipe(
+      tap(
+        () => {},
+        (err: any) => {
+          if (err instanceof HttpErrorResponse) {
+            if (!(err.status === 401 && (err.message === '' || (err.url && err.url.includes('api/account'))))) {
+              this.eventManager.broadcast({ name: 'jHipsterRegistryApp.httpError', content: err });
+            }
+          }
+        }
+      )
+    );
+  }
+}

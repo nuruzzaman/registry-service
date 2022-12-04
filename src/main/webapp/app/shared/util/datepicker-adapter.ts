@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2a4245927b27570e9fd3da2596dc1aecde53606b4168db1e61dacf178e6ff2fe
-size 669
+/**
+ * Angular bootstrap Date adapter
+ */
+import { Injectable } from '@angular/core';
+import { NgbDateAdapter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { Moment } from 'moment';
+import * as moment from 'moment';
+
+@Injectable()
+export class NgbDateMomentAdapter extends NgbDateAdapter<Moment> {
+  fromModel(date: Moment): NgbDateStruct {
+    if (date != null && moment.isMoment(date) && date.isValid()) {
+      return { year: date.year(), month: date.month() + 1, day: date.date() };
+    }
+    return null;
+  }
+
+  toModel(date: NgbDateStruct): Moment {
+    return date ? moment(date.year + '-' + date.month + '-' + date.day, 'YYYY-MM-DD') : null;
+  }
+}

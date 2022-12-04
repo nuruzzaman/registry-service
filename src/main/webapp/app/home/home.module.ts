@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:07fc9856f01c4b8c3699a73eca27edf816c310b55bc43ef6dc5147751f725345
-size 534
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+
+import { JHipsterRegistrySharedModule } from 'app/shared/shared.module';
+import { HOME_ROUTE } from './home.route';
+import { HomeComponent } from './home.component';
+import { EurekaStatusService } from 'app/home/eureka.status.service';
+
+@NgModule({
+  imports: [JHipsterRegistrySharedModule, RouterModule.forChild([HOME_ROUTE])],
+  declarations: [HomeComponent],
+  providers: [EurekaStatusService]
+})
+export class JHipsterRegistryHomeModule {}

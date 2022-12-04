@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:43e5ff7cc37a4c5a1b0044a98c44150862bf69c41bbb85367a67a4a69d512acf
-size 451
+      _       _        ___            _ 
+     | |     | |      |__ \          | |
+   __| | __ _| |_ __ _   ) |_ __ ___ | |
+  / _` |/ _` | __/ _` | / /| '_ ` _ \| |
+ | (_| | (_| | || (_| |/ /_| | | | | | |
+  \__,_|\__,_|\__\__,_|____|_| |_| |_|_|
+                                                                               
+${AnsiColor.RED}:: data2ml :: Running Spring Boot ${spring-boot.version} ::
+:: http://data2ml.com.au/ ::${AnsiColor.DEFAULT}

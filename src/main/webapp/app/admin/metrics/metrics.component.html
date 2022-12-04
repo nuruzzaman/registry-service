@@ -1,3 +1,54 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9a71647af7b0afabb48f0885b44f24e2a2e8698c57115a9fa28d1278ef83d1ac
-size 1925
+<div>
+    <div class="head">
+        <h2 class="d-inline-block">Application Metrics</h2>
+        <jhi-route-selector class="float-right refresh-left-side"></jhi-route-selector>
+    </div>
+
+    <h3>JVM Metrics</h3>
+    <div class="row" *ngIf="!updatingMetrics">
+        <jhi-jvm-memory
+            class="col-md-4"
+            [updating]="updatingMetrics"
+            [jvmMemoryMetrics]="metrics.jvm">
+        </jhi-jvm-memory>
+        <jhi-jvm-threads class="col-md-4" [threadData]="threadData"></jhi-jvm-threads>
+        <jhi-metrics-system
+            class="col-md-4"
+            [updating]="updatingMetrics"
+            [systemMetrics]="metrics.processMetrics">
+        </jhi-metrics-system>
+    </div>
+
+    <div *ngIf="isObjectExisting(metrics, 'garbageCollector')">
+        <h3>Garbage collector statistics</h3>
+        <jhi-metrics-garbagecollector [updating]="updatingMetrics"
+                                      [garbageCollectorMetrics]="metrics.garbageCollector"></jhi-metrics-garbagecollector>
+    </div>
+
+    <div class="well well-lg" *ngIf="updatingMetrics">Updating...</div>
+
+    <jhi-metrics-request
+        *ngIf="isObjectExisting(metrics, 'http.server.requests')"
+        [updating]="updatingMetrics"
+        [requestMetrics]="metrics['http.server.requests']">
+    </jhi-metrics-request>
+
+    <jhi-metrics-endpoints-requests
+        *ngIf="isObjectExisting(metrics, 'services')"
+        [updating]="updatingMetrics"
+        [endpointsRequestsMetrics]="metrics.services">
+    </jhi-metrics-endpoints-requests>
+
+    <jhi-metrics-cache
+        *ngIf="isObjectExisting(metrics, 'cache')"
+        [updating]="updatingMetrics"
+        [cacheMetrics]="metrics.cache">
+    </jhi-metrics-cache>
+
+    <jhi-metrics-datasource
+        *ngIf="isObjectExistingAndNotEmpty(metrics, 'databases')"
+        [updating]="updatingMetrics"
+        [datasourceMetrics]="metrics.databases">
+    </jhi-metrics-datasource>
+
+</div>

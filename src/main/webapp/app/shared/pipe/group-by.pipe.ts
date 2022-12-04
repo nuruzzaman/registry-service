@@ -1,3 +1,37 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2e65e836a56bbe3eb914bb7df17d87c88df692c414b9da3939cf21a8111972ea
-size 871
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'groupBy'
+})
+export class GroupByPipe implements PipeTransform {
+  transform(collection: Object[], term: string) {
+    const newValue = [];
+
+    collection.forEach(col => {
+      const keyVal = this.deepFind(col, term);
+      const index = newValue.findIndex(myObj => myObj.key === keyVal);
+      if (index >= 0) {
+        newValue[index].value.push(col);
+      } else {
+        newValue.push({ key: keyVal, value: [col] });
+      }
+    });
+    return newValue;
+  }
+
+  private deepFind(obj, path) {
+    const paths = path.toString().split(/[.[\]]/);
+    let current = obj;
+
+    paths.forEach(onePath => {
+      if (onePath !== '') {
+        if (!current[onePath]) {
+          return undefined;
+        } else {
+          current = current[onePath];
+        }
+      }
+    });
+    return current;
+  }
+}

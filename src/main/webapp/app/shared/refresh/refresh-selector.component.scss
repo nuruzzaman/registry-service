@@ -1,3 +1,40 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cf05a6c576d4346cbc76404608c44cb33dcdbdbfd043317ff58008c373849040
-size 713
+/* ==========================================================================
+Refresh selector styles
+========================================================================== */
+
+.dropdown {
+  .times {
+    font-weight: normal;
+
+    .times-text {
+      font-family: sans-serif;
+    }
+  }
+
+  .dropdown-menu {
+    border-color: darkgrey;
+
+    .dropdown-item {
+      /* refresh times */
+      word-break: break-all;
+
+      &:hover {
+        color: #fff;
+        background-color: #80bed8;
+      }
+
+      &:active {
+        color: #fff;
+        background-color: #0275d8;
+      }
+
+      &.manual-refresh {
+        display: initial;
+      }
+    }
+
+    .dropdown-divider {
+      background-color: #dcdcdc;
+    }
+  }
+}

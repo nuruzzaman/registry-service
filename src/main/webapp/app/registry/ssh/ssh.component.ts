@@ -1,3 +1,31 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4324ed3ad6c5bbd83d3271b5d13eb1f4617c9f67b9e3b2c93471bb6899de9d24
-size 782
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { JhiSSHService } from './ssh.service';
+
+@Component({
+  selector: 'jhi-applications',
+  templateUrl: './ssh.component.html'
+})
+export class JhiSSHComponent implements OnInit, OnDestroy {
+  data: any;
+  showMore: boolean;
+  unsubscribe$ = new Subject();
+
+  constructor(private sshService: JhiSSHService) {
+    this.showMore = true;
+  }
+
+  ngOnInit() {
+    this.sshService
+      .getSshPublicKey()
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(response => (this.data = response));
+  }
+
+  ngOnDestroy() {
+    // prevent memory leak when component destroyed
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
+}

@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d646c0e5d669d9523adfddfe0c12d070de05f3a29250f778a046587b61e99bbe
-size 665
+package io.github.jhipster.registry.web.rest.errors;
+
+import java.io.Serializable;
+import java.util.Map;
+
+/**
+ * View Model for sending a parameterized error message.
+ */
+public class ParameterizedErrorVM implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    private final String message;
+    private final Map<String, String> paramMap;
+
+    public ParameterizedErrorVM(String message, Map<String, String> paramMap) {
+        this.message = message;
+        this.paramMap = paramMap;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public Map<String, String> getParams() {
+        return paramMap;
+    }
+
+}

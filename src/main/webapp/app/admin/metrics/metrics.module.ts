@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6294f27390b0d5110adb94453daef0249f4077245961679c23862eb206f38c1f
-size 458
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { JHipsterRegistrySharedModule } from 'app/shared/shared.module';
+
+import { JhiMetricsMonitoringComponent } from './metrics.component';
+
+import { metricsRoute } from './metrics.route';
+
+@NgModule({
+  imports: [JHipsterRegistrySharedModule, RouterModule.forChild([metricsRoute])],
+  declarations: [JhiMetricsMonitoringComponent]
+})
+export class MetricsModule {}

@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f98b0400dd0215e53c578732f3acbd9cbc1ebec7dc6825db1ff30f81d75ac87d
-size 654
+import { Injectable } from '@angular/core';
+import { flatMap } from 'rxjs/operators';
+import { AccountService } from 'app/core/auth/account.service';
+import { AuthServerProvider } from 'app/core/auth/auth-jwt.service';
+
+@Injectable({ providedIn: 'root' })
+export class LoginService {
+  constructor(private accountService: AccountService, private authServerProvider: AuthServerProvider) {}
+
+  login(credentials) {
+    return this.authServerProvider.login(credentials).pipe(flatMap(() => this.accountService.identity(true)));
+  }
+
+  logout() {
+    this.authServerProvider.logout().subscribe(null, null, () => this.accountService.authenticate(null));
+  }
+}

@@ -1,3 +1,36 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ed4741556db901c7302602152ef5b2561831113b5c6d45abea614903af70c7f3
-size 639
+import { Routes } from '@angular/router';
+
+import { ErrorComponent } from './error.component';
+
+export const errorRoute: Routes = [
+  {
+    path: 'error',
+    component: ErrorComponent,
+    data: {
+      authorities: [],
+      pageTitle: 'JHipsterRegistry'
+    }
+  },
+  {
+    path: 'accessdenied',
+    component: ErrorComponent,
+    data: {
+      authorities: [],
+      pageTitle: 'JHipsterRegistry',
+      error403: true
+    }
+  },
+  {
+    path: '404',
+    component: ErrorComponent,
+    data: {
+      authorities: [],
+      pageTitle: 'JHipsterRegistry',
+      error404: true
+    }
+  },
+  {
+    path: '**',
+    redirectTo: '/404'
+  }
+];

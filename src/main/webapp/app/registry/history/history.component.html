@@ -1,3 +1,39 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:613d359a870c447a592e6f1ea0c00e39a30b04f9cd7df4e3e6185d758ad2e0e2
-size 1442
+<div>
+    <div class="head">
+        <h2 class="d-inline-block">Instances history</h2>
+        <jhi-refresh-selector class="float-right refresh-left-side"></jhi-refresh-selector>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <ngb-tabset activeId="registered" (tabChange)="beforeChange($event)" type="pills">
+                <ngb-tab id="registered" title="Last registered leases">
+                    <ng-template ngbTabContent></ng-template>
+                </ngb-tab>
+                <ngb-tab id="canceled" title="Last canceled leases">
+                    <ng-template ngbTabContent></ng-template>
+                </ngb-tab>
+            </ngb-tabset>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Instance</th>
+                    </tr>
+                    </thead>
+                    <tbody *ngIf="items">
+                    <tr *ngFor="let instance of items">
+                        <td>
+                            {{instance.key | date:'medium'}}
+                        </td>
+                        <td>
+                            {{instance.value}}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

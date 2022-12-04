@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:61d3741ecf3a1e91ea048d4ec2cfaf87f973933019e81346bfd7772f7eeba525
-size 526
+import { SpyObject } from './spyobject';
+import { StateStorageService } from 'app/core/auth/state-storage.service';
+import Spy = jasmine.Spy;
+
+export class MockStateStorageService extends SpyObject {
+  getUrlSpy: Spy;
+  storeUrlSpy: Spy;
+
+  constructor() {
+    super(StateStorageService);
+    this.setUrlSpy({});
+    this.storeUrlSpy = this.spy('storeUrl').andReturn(this);
+  }
+
+  setUrlSpy(json) {
+    this.getUrlSpy = this.spy('getUrl').andReturn(json);
+  }
+
+  setResponse(json: any): void {
+    this.setUrlSpy(json);
+  }
+}

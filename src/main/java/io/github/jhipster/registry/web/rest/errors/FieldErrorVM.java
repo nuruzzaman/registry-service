@@ -1,3 +1,33 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0967053e13a2b1f6411695a348df169461adaefeb6c1e3d6208914db2d8401ed
-size 659
+package io.github.jhipster.registry.web.rest.errors;
+
+import java.io.Serializable;
+
+public class FieldErrorVM implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    private final String objectName;
+
+    private final String field;
+
+    private final String message;
+
+    public FieldErrorVM(String dto, String field, String message) {
+        this.objectName = dto;
+        this.field = field;
+        this.message = message;
+    }
+
+    public String getObjectName() {
+        return objectName;
+    }
+
+    public String getField() {
+        return field;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+}

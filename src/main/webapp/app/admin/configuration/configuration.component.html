@@ -1,3 +1,51 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c1b20ede7dad02e1e9d0f89378a1b39e9028c8d0c8eea69f9910010b0d65a4fc
-size 2329
+<div>
+    <div class="head">
+        <h2 id="configuration-page-heading" class="d-inline-block">Configuration</h2>
+        <jhi-route-selector class="float-right refresh-left-side"></jhi-route-selector>
+    </div>
+
+    <span>Filter (by prefix)</span> <input type="text" [(ngModel)]="filter" class="form-control">
+    <h3 id="spring-configuration">Spring configuration</h3>
+    <table class="table table-striped table-bordered table-responsive d-table" aria-describedby="spring-configuration" *ngIf="configuration">
+        <thead>
+        <tr>
+            <th scope="col" class="w-40" (click)="orderProp = 'prefix'; reverse=!reverse"><span>Prefix</span></th>
+            <th scope="col" class="w-60" (click)="orderProp = 'properties'; reverse=!reverse"><span>Properties</span></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let entry of (configuration | pureFilter:filter:'prefix' | orderBy:orderProp:reverse)">
+            <td><span>{{entry.prefix}}</span></td>
+            <td>
+                <div class="row" *ngFor="let key of keys(entry.properties)">
+                    <div class="col-md-4">{{key}}</div>
+                    <div class="col-md-8">
+                        <span class="float-right badge-secondary break">{{entry.properties[key] | json}}</span>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div *ngIf="allConfiguration">
+        <div *ngFor="let key of keys(allConfiguration); let i = index">
+            <h4 [id]="key + '_' + i"><span>{{key}}</span></h4>
+            <table class="table table-sm table-striped table-bordered table-responsive d-table" [attr.aria-describedby]="key + '_' + i">
+                <thead>
+                <tr>
+                    <th scope="col" class="w-40">Property</th>
+                    <th scope="col" class="w-60">Value</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of allConfiguration[key]">
+                    <td class="break">{{item.key}}</td>
+                    <td class="break">
+                        <span class="float-right badge-secondary break">{{item.val}}</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

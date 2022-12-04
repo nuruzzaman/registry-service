@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:abaa4994468fb69043d5454fac37eef24bde8b9c8da5d7e088c0d510053139a5
-size 488
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { ProdConfig } from './blocks/config/prod.config';
+import { JHipsterRegistryAppModule } from './app.module';
+
+ProdConfig();
+
+if (module['hot']) {
+  module['hot'].accept();
+}
+
+platformBrowserDynamic()
+  .bootstrapModule(JHipsterRegistryAppModule, { preserveWhitespaces: true })
+  // eslint-disable-next-line no-console
+  .then(() => console.log('Application started'))
+  .catch(err => console.error(err));

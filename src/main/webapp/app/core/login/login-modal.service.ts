@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c3af1f65061aef1d1d4b3083102f81d5ed0519bbcae3947586529c15eb3993ac
-size 579
+import { Injectable } from '@angular/core';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+
+import { JhiLoginModalComponent } from 'app/shared/login/login.component';
+
+@Injectable({ providedIn: 'root' })
+export class LoginModalService {
+  private isOpen = false;
+  constructor(private modalService: NgbModal) {}
+
+  open(): NgbModalRef {
+    if (this.isOpen) {
+      return;
+    }
+    this.isOpen = true;
+    const modalRef = this.modalService.open(JhiLoginModalComponent);
+    modalRef.result.finally(() => (this.isOpen = false));
+    return modalRef;
+  }
+}

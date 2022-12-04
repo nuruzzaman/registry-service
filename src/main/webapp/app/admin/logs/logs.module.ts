@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:caaaa84dc1839097c21b8d1939ac15cdcf011e75922e06956f76fe414045ccda
-size 411
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { JHipsterRegistrySharedModule } from 'app/shared/shared.module';
+
+import { LogsComponent } from './logs.component';
+
+import { logsRoute } from './logs.route';
+
+@NgModule({
+  imports: [JHipsterRegistrySharedModule, RouterModule.forChild([logsRoute])],
+  declarations: [LogsComponent]
+})
+export class LogsModule {}

@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:df0441384bb34f2657365b1714e59fe48902ec98568ac6498c95bda26628d4a7
-size 423
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+    version="3.0">
+
+    <mime-mapping>
+        <extension>html</extension>
+        <mime-type>text/html;charset=utf-8</mime-type>
+    </mime-mapping>
+
+</web-app>

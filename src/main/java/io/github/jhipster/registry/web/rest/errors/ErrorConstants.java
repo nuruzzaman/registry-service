@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:988d52fe09bddccb887e8b71d805cba7f8f9705eca5020d50d4587c2c8ae98e5
-size 623
+package io.github.jhipster.registry.web.rest.errors;
+
+import java.net.URI;
+
+public final class ErrorConstants {
+
+    public static final String ERR_VALIDATION = "error.validation";
+    public static final String PROBLEM_BASE_URL = "https://www.jhipster.tech/problem";
+    public static final URI DEFAULT_TYPE = URI.create(PROBLEM_BASE_URL + "/problem-with-message");
+    public static final URI CONSTRAINT_VIOLATION_TYPE = URI.create(PROBLEM_BASE_URL + "/constraint-violation");
+    public static final URI ENTITY_NOT_FOUND_TYPE = URI.create(PROBLEM_BASE_URL + "/entity-not-found");
+
+    private ErrorConstants() {
+    }
+}

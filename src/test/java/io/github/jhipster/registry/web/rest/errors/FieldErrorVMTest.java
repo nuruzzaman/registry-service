@@ -1,3 +1,33 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:76938f64c4c78118acba21a923a0ca1ca3b063fd87618c116fecbea99cd3da8e
-size 1009
+package io.github.jhipster.registry.web.rest.errors;
+
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+public class FieldErrorVMTest {
+
+    @Test
+    public void getObjectNameTest() {
+        FieldErrorVM vm = new FieldErrorVM(null, null, null);
+        assertThat(vm.getObjectName()).isNull();
+        vm = new FieldErrorVM("dto", "field", "message");
+        assertThat(vm.getObjectName()).isEqualTo("dto");
+    }
+
+    @Test
+    public void getFieldTest() {
+        FieldErrorVM vm = new FieldErrorVM(null, null, null);
+        assertThat(vm.getField()).isNull();
+        vm = new FieldErrorVM("dto", "field", "message");
+        assertThat(vm.getField()).isEqualTo("field");
+    }
+
+    @Test
+    public void getMessageTest() {
+        FieldErrorVM vm = new FieldErrorVM(null, null, null);
+        assertThat(vm.getMessage()).isNull();
+        vm = new FieldErrorVM("dto", "field", "message");
+        assertThat(vm.getMessage()).isEqualTo("message");
+    }
+
+}

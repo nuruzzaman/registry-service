@@ -1,3 +1,33 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7805586244812e5aae3dcae53e6cdbed6c2be3378ab62e06bbd1b088c5f61d15
-size 944
+import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+import { SessionStorageService } from 'ngx-webstorage';
+
+@Injectable({ providedIn: 'root' })
+export class JhiRefreshService {
+  // Observable sources
+  private refreshChangedSource = new Subject<any>();
+  private refreshReloadSource = new Subject<any>();
+  refreshChanged$: Observable<any>;
+  refreshReload$: Observable<any>;
+
+  constructor(private sessionStorage: SessionStorageService) {
+    this.refreshChanged$ = this.refreshChangedSource.asObservable();
+    this.refreshReload$ = this.refreshReloadSource.asObservable();
+  }
+
+  refreshChanged() {
+    this.refreshChangedSource.next();
+  }
+
+  refreshReload() {
+    this.refreshReloadSource.next();
+  }
+
+  getSelectedRefreshTime(): number {
+    return this.sessionStorage.retrieve('refreshTime');
+  }
+
+  storeSelectedRefreshTime(time: number) {
+    this.sessionStorage.store('refreshTime', time);
+  }
+}

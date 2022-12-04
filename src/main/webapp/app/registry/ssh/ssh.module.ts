@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4e98fdc16561fb3c96bd4a23732a6e724ff3f423d781782e37c647cd3024ddd4
-size 409
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { JHipsterRegistrySharedModule } from 'app/shared/shared.module';
+
+import { sshRoute } from './ssh.route';
+import { JhiSSHComponent } from './ssh.component';
+
+@NgModule({
+  imports: [JHipsterRegistrySharedModule, RouterModule.forChild([sshRoute])],
+  declarations: [JhiSSHComponent]
+})
+export class SSHModule {}

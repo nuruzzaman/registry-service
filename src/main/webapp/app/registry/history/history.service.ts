@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:abf7c32fb56afb91373e54b698cf01b79a33336450f2a9d24a70f48117d95a0c
-size 327
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+@Injectable({ providedIn: 'root' })
+export class JhiHistoryService {
+  constructor(private http: HttpClient) {}
+
+  findAll(): Observable<any> {
+    return this.http.get('api/eureka/lastn');
+  }
+}

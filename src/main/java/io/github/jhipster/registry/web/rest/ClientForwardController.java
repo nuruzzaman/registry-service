@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:92236c4d2f04ab0cda952c0a1ccf160e1ce519bca98527d61b1ef573f12b30fa
-size 494
+package io.github.jhipster.registry.web.rest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class ClientForwardController {
+
+    /**
+     * Forwards any unmapped paths (except those containing a period) to the client {@code index.html}.
+     * @return forward to client {@code index.html}.
+     */
+    @GetMapping(value = "/**/{path:[^\\.]*}")
+    public String forward() {
+        return "forward:/";
+    }
+}

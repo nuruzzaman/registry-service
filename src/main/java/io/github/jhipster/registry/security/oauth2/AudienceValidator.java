@@ -1,3 +1,33 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:04660982983868458123d48fc5e333e154f85a6bb522d82e696de5d36c1e9039
-size 1338
+package io.github.jhipster.registry.security.oauth2;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.security.oauth2.core.OAuth2Error;
+import org.springframework.security.oauth2.core.OAuth2TokenValidator;
+import org.springframework.security.oauth2.core.OAuth2TokenValidatorResult;
+import org.springframework.security.oauth2.jwt.Jwt;
+import org.springframework.util.Assert;
+
+import java.util.List;
+
+public class AudienceValidator implements OAuth2TokenValidator<Jwt> {
+    private final Logger log = LoggerFactory.getLogger(AudienceValidator.class);
+    private OAuth2Error error = new OAuth2Error("invalid_token", "The required audience is missing", null);
+
+    private final List<String> allowedAudience;
+
+    public AudienceValidator(List<String> allowedAudience) {
+        Assert.notEmpty(allowedAudience, "Allowed audience should not be null or empty.");
+        this.allowedAudience = allowedAudience;
+    }
+
+    public OAuth2TokenValidatorResult validate(Jwt jwt) {
+        List<String> audience = jwt.getAudience();
+        if(audience.stream().anyMatch(allowedAudience::contains)) {
+            return OAuth2TokenValidatorResult.success();
+        } else {
+            log.warn("Invalid audience: {}", audience);
+            return OAuth2TokenValidatorResult.failure(error);
+        }
+    }
+}

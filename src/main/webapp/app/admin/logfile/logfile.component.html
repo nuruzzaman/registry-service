@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a91be8bc12871ce0a6d3351b309a6e31537f6d08876af0f10516b5793001feff
-size 618
+<div>
+    <div class="head">
+        <h2 class="d-inline-block">View Logs</h2>
+        <jhi-route-selector class="float-right refresh-left-side"></jhi-route-selector>
+    </div>
+
+    <div>
+        <div class="to-bottom" *ngIf="logtxt" (click)="scrollToBottom()"><i class="fa fa-arrow-circle-down"></i> Bottom</div>
+        <div class="form-group">
+            <textarea #logfile readonly class="form-control log-viewer" rows="25">
+    {{logtxt}}
+            </textarea>
+        </div>
+        <div class="to-top" *ngIf="logtxt" (click)="scrollToTop()"><i class="fa fa-arrow-circle-up"></i> Top</div>
+    </div>
+</div>

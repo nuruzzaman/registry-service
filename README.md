@@ -21,11 +21,9 @@ To run the cloned repository;
 - For development run `./mvnw -Pdev,webpack` to just start in development or run `./mvnw` and run `npm install && npm start` for hot reload of client side code.
 - For production profile run `./mvnw -Pprod`
 
-
 ## GitHub Commit 
 
-	>git add README.md
-	>git commit -m "first commit"
-	>git branch -M main
-	>git push -u origin main
-
+>git add README.md
+>git commit -m "first commit"
+>git branch -M main
+>git push -u origin main

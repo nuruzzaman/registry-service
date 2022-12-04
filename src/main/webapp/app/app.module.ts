@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6dd76c21f102ad8e3c474ec7a7270cce9ca620d3501af930131a0f42d59aa979
-size 1168
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import './vendor';
+import { JHipsterRegistrySharedModule } from 'app/shared/shared.module';
+import { JHipsterRegistryCoreModule } from 'app/core/core.module';
+import { JHipsterRegistryAppRoutingModule } from './app-routing.module';
+import { JHipsterRegistryHomeModule } from './home/home.module';
+// jhipster-needle-angular-add-module-import JHipster will add new module here
+import { JhiMainComponent } from './layouts/main/main.component';
+import { NavbarComponent } from './layouts/navbar/navbar.component';
+import { FooterComponent } from './layouts/footer/footer.component';
+import { PageRibbonComponent } from './layouts/profiles/page-ribbon.component';
+import { ErrorComponent } from './layouts/error/error.component';
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    JHipsterRegistrySharedModule,
+    JHipsterRegistryCoreModule,
+    JHipsterRegistryHomeModule,
+    // jhipster-needle-angular-add-module JHipster will add new module here
+    JHipsterRegistryAppRoutingModule
+  ],
+  declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, FooterComponent],
+  bootstrap: [JhiMainComponent]
+})
+export class JHipsterRegistryAppModule {}

@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:76c8409eb9da3a6bdc94fd7503502f65ee7e065e7e1d007bc20396ca39fae14f
-size 347
+/* after changing this file run 'npm run webpack:build' */
+
+/***************************
+put Sass variables here:
+eg $input-color: red;
+****************************/
+// Override Bootstrap variables
+@import 'bootstrap-variables';
+// Import Bootstrap source files from node_modules
+@import '~bootstrap/scss/bootstrap';
+
+/* jhipster-needle-scss-add-vendor JHipster will add new css style */

@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3c20d5947e200099609ee7ab6dfafbec3d38ed292f6fbb57d6e92795607bf785
-size 134
+version: '2'
+services:
+  jhipsterregistry-sonar:
+    image: sonarqube:7.9.1-community
+    ports:
+      - 9001:9000
+      - 9092:9092

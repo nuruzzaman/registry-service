@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:26bb701a7176921ba048835e57dbfdb6297bb6688468a76fd8c5be9658db7c31
-size 891
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+@Injectable({ providedIn: 'root' })
+export class JhiConfigService {
+  constructor(private http: HttpClient) {}
+
+  getConfigAsYaml(application: string, profile: string, label: string): Observable<any> {
+    return this.http.get('config/' + label + '/' + application + '-' + profile + '.yml', { responseType: 'text' });
+  }
+
+  getConfigAsProperties(application: string, profile: string, label: string): Observable<any> {
+    return this.http.get('config/' + label + '/' + application + '-' + profile + '.properties', { responseType: 'text' });
+  }
+
+  getConfigAsJson(application: string, profile: string, label: string): Observable<any> {
+    return this.http.get('config/' + label + '/' + application + '-' + profile + '.json', { responseType: 'text' });
+  }
+}

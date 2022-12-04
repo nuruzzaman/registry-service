@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:bb79cdc33628de00f62c62c318b336aa6b5e49d3ed204300f9a1e3daac634ba1
-size 145
+# robotstxt.org/
+
+User-agent: *
+Disallow: /api/account
+Disallow: /api/logs/
+Disallow: /api/users/
+Disallow: /management/
+Disallow: /v2/api-docs/

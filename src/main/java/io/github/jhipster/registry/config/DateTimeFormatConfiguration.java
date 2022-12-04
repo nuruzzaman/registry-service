@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a0a12d97f5b6264b7c9374b8c0adb57a90070e6ea89b4bd8618de4dde073522c
-size 734
+package io.github.jhipster.registry.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.format.FormatterRegistry;
+import org.springframework.format.datetime.standard.DateTimeFormatterRegistrar;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+/**
+ * Configure the converters to use the ISO format for dates by default.
+ */
+@Configuration
+public class DateTimeFormatConfiguration implements WebMvcConfigurer {
+
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        DateTimeFormatterRegistrar registrar = new DateTimeFormatterRegistrar();
+        registrar.setUseIsoFormat(true);
+        registrar.registerFormatters(registry);
+    }
+}

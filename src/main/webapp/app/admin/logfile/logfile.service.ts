@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0fcd8ff3996866208dda86590e70a8ca9d7a7a541770fb7d5701cb22283bc034
-size 739
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Route } from 'app/shared/routes/route.model';
+
+@Injectable({ providedIn: 'root' })
+export class JhiLogfileService {
+  constructor(private http: HttpClient) {}
+
+  // get the Registry's logfile
+  getLogfile(): Observable<any> {
+    return this.http.get('management/logfile', { responseType: 'text' });
+  }
+
+  // get the instance's logfile
+  getInstanceLogfile(instance: Route): Observable<any> {
+    if (instance && instance.prefix && instance.prefix.length > 0) {
+      return this.http.get(instance.prefix + '/management/logfile', { responseType: 'text' });
+    }
+    return this.getLogfile();
+  }
+}

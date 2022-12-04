@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2bcc741eb168a426875929a7725b1e1a172b24a2613e7cfd004af1803259111d
-size 841
+package io.github.jhipster.registry.client;
+
+import feign.RequestInterceptor;
+import feign.RequestTemplate;
+import io.github.jhipster.registry.security.oauth2.AuthorizationHeaderUtil;
+
+import java.util.Optional;
+
+public class TokenRelayRequestInterceptor implements RequestInterceptor {
+
+    public static final String AUTHORIZATION = "Authorization";
+
+    private final AuthorizationHeaderUtil authorizationHeaderUtil;
+
+    TokenRelayRequestInterceptor(AuthorizationHeaderUtil authorizationHeaderUtil) {
+        super();
+        this.authorizationHeaderUtil = authorizationHeaderUtil;
+    }
+
+    @Override
+    public void apply(RequestTemplate template) {
+        Optional<String> authorizationHeader = authorizationHeaderUtil.getAuthorizationHeader();
+        authorizationHeader.ifPresent(s -> template.header(AUTHORIZATION, s));
+    }
+}

@@ -1,3 +1,36 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2072cdd4fe50da59882fee90623c407d5659d99dbe10887781ce0aa70d1a6351
-size 885
+package io.github.jhipster.registry.gateway;
+
+import com.netflix.zuul.ZuulFilter;
+import com.netflix.zuul.context.RequestContext;
+
+import java.util.Set;
+
+import static org.springframework.cloud.netflix.zuul.filters.support.FilterConstants.PRE_TYPE;
+
+public class JWTTokenRelayFilter extends ZuulFilter {
+
+    @Override
+    public Object run() {
+        RequestContext ctx = RequestContext.getCurrentContext();
+        @SuppressWarnings("unchecked")
+        Set<String> headers = (Set<String>) ctx.get("ignoredHeaders");
+        // JWT tokens should be relayed to the resource servers
+        headers.remove("authorization");
+        return null;
+    }
+
+    @Override
+    public boolean shouldFilter() {
+        return true;
+    }
+
+    @Override
+    public String filterType() {
+        return PRE_TYPE;
+    }
+
+    @Override
+    public int filterOrder() {
+        return 10000;
+    }
+}

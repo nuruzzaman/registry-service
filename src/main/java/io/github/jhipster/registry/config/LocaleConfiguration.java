@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6c10a56cd77326fee5f2e5348504c72e91c34735199b3f14c3ca7487dc6bb9a1
-size 1162
+package io.github.jhipster.registry.config;
+
+import io.github.jhipster.config.locale.AngularCookieLocaleResolver;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+
+@Configuration
+public class LocaleConfiguration implements WebMvcConfigurer {
+
+    @Bean(name = "localeResolver")
+    public LocaleResolver localeResolver() {
+        AngularCookieLocaleResolver cookieLocaleResolver = new AngularCookieLocaleResolver();
+        cookieLocaleResolver.setCookieName("NG_TRANSLATE_LANG_KEY");
+        return cookieLocaleResolver;
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
+        localeChangeInterceptor.setParamName("language");
+        registry.addInterceptor(localeChangeInterceptor);
+    }
+}

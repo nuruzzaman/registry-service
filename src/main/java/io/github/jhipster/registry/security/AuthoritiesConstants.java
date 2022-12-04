@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:4ae3e5d9d06892840212a23c4e9f8a341f94b1585fea6331dcc4500d25c2cb40
-size 357
+package io.github.jhipster.registry.security;
+
+/**
+ * Constants for Spring Security authorities.
+ */
+public final class AuthoritiesConstants {
+
+    public static final String ADMIN = "ROLE_ADMIN";
+
+    public static final String USER = "ROLE_USER";
+
+    public static final String ANONYMOUS = "ROLE_ANONYMOUS";
+
+    private AuthoritiesConstants() {
+    }
+}

@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:39e34ed39d99e2f327ece4ff63a5069b950956d8c67cd214f58ebffb8233a1be
-size 330
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+@Injectable({ providedIn: 'root' })
+export class EurekaStatusService {
+  constructor(private http: HttpClient) {}
+
+  findAll(): Observable<any> {
+    return this.http.get('api/eureka/status');
+  }
+}

@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c9b74c66738cad226abb3801ae00d583d6fc9a2563e9b681e05e17e2cbfcf3ad
-size 390
+/* ==========================================================================
+Applications page styles
+========================================================================== */
+
+.apps {
+  margin-bottom: 2%;
+  padding-left: 0;
+
+  span.badge {
+    /* UP, DOWN, ... */
+    float: right;
+  }
+
+  li.list-group-item {
+    /* apps names */
+    word-break: break-all;
+    display: block;
+  }
+}

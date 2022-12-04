@@ -1,3 +1,34 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:57555572e2cb0166e1d9a652bd53b0681a8b438f4d7742ab430b50d67dfe1fa5
-size 1003
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+
+@NgModule({
+  imports: [
+    RouterModule.forChild([
+      {
+        path: 'applications',
+        loadChildren: () => import('./applications/applications.module').then(m => m.ApplicationsModule)
+      },
+      {
+        path: 'config',
+        loadChildren: () => import('./config/config.module').then(m => m.ConfigModule)
+      },
+      {
+        path: 'encryption',
+        loadChildren: () => import('./encryption/encryption.module').then(m => m.EncryptionModule)
+      },
+      {
+        path: 'history',
+        loadChildren: () => import('./history/history.module').then(m => m.HistoryModule)
+      },
+      {
+        path: 'replicas',
+        loadChildren: () => import('./replicas/replicas.module').then(m => m.ReplicasModule)
+      },
+      {
+        path: 'ssh',
+        loadChildren: () => import('./ssh/ssh.module').then(m => m.SSHModule)
+      }
+    ])
+  ]
+})
+export class RegistryRoutingModule {}

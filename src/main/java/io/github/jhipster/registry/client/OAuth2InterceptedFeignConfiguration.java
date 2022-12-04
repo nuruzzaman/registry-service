@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b4d7aaa7b97ac2cc19b23dcdf17e1c6b2bd4f6f5238a52411f99f6f902275bbf
-size 702
+package io.github.jhipster.registry.client;
+
+import io.github.jhipster.registry.security.oauth2.AuthorizationHeaderUtil;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import feign.RequestInterceptor;
+import org.springframework.context.annotation.Profile;
+
+import static io.github.jhipster.registry.config.Constants.PROFILE_OAUTH2;
+
+@Configuration
+@Profile(PROFILE_OAUTH2)
+public class OAuth2InterceptedFeignConfiguration {
+
+    @Bean(name = "oauth2RequestInterceptor")
+    public RequestInterceptor getOAuth2RequestInterceptor(AuthorizationHeaderUtil headerUtil) {
+        return new TokenRelayRequestInterceptor(headerUtil);
+    }
+}

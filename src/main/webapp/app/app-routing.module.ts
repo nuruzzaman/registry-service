@@ -1,3 +1,38 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:1ba4c1b1aa817e8d705dd2e7f3da3faf317831cd7c6c0313a4185f21668ff8e8
-size 1174
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { errorRoute } from './layouts/error/error.route';
+import { navbarRoute } from './layouts/navbar/navbar.route';
+import { DEBUG_INFO_ENABLED } from 'app/app.constants';
+
+import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
+
+const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
+
+@NgModule({
+  imports: [
+    RouterModule.forRoot(
+      [
+        {
+          path: 'admin',
+          data: {
+            authorities: ['ROLE_ADMIN']
+          },
+          canActivate: [UserRouteAccessService],
+          loadChildren: () => import('./admin/admin-routing.module').then(m => m.AdminRoutingModule)
+        },
+        {
+          path: 'registry',
+          data: {
+            authorities: ['ROLE_ADMIN']
+          },
+          canActivate: [UserRouteAccessService],
+          loadChildren: () => import('./registry/registry-routing.module').then(m => m.RegistryRoutingModule)
+        },
+        ...LAYOUT_ROUTES
+      ],
+      { enableTracing: DEBUG_INFO_ENABLED }
+    )
+  ],
+  exports: [RouterModule]
+})
+export class JHipsterRegistryAppRoutingModule {}

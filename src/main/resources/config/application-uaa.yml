@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e5d14d56606dc8a8b17f88915ccbf61a56ba1b39bd34302eb5e13daef67e0d3b
-size 331
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          uaa:
+            token-uri: http://uaa/oauth/token
+        registration:
+          uaa:
+            client-id: internal
+            client-secret: internal
+            authorization-grant-type: client_credentials
+
+eureka:
+  client:
+    fetch-registry: true

@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:57b909407a9c8505cfe5225520be0602faf1b117ebae55f27bd7f62e51e1b6ae
-size 359
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+@Injectable({ providedIn: 'root' })
+export class JhiSSHService {
+  constructor(private http: HttpClient) {}
+
+  getSshPublicKey(): Observable<any> {
+    return this.http.get('api/ssh/public_key', { responseType: 'text' });
+  }
+}

@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6d771505e513d91299052f8e3ad3ce7b5c8b81593473de4923d90c6caecc9434
-size 256
+import { enableProdMode } from '@angular/core';
+import { DEBUG_INFO_ENABLED } from 'app/app.constants';
+
+export function ProdConfig() {
+  // disable debug data on prod profile to improve performance
+  if (!DEBUG_INFO_ENABLED) {
+    enableProdMode();
+  }
+}

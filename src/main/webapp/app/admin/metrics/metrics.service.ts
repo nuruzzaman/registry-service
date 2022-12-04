@@ -1,3 +1,35 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:64959af8acb875692eabf9d9b8c4dd5897d21dd554adb22f2697b09867676754
-size 1109
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+import { SERVER_API_URL } from 'app/app.constants';
+import { Route } from 'app/shared/routes/route.model';
+
+@Injectable({ providedIn: 'root' })
+export class JhiMetricsService {
+  constructor(private http: HttpClient) {}
+
+  // get the Registry's metrics
+  getMetrics(): Observable<any> {
+    return this.http.get(SERVER_API_URL + 'management/jhimetrics');
+  }
+
+  // get the instance's metrics
+  getInstanceMetrics(instance: Route): Observable<any> {
+    if (instance && instance.prefix && instance.prefix.length > 0) {
+      return this.http.get(instance.prefix + '/management/jhimetrics');
+    }
+    return this.getMetrics();
+  }
+
+  threadDump(): Observable<any> {
+    return this.http.get(SERVER_API_URL + 'management/threaddump');
+  }
+
+  instanceThreadDump(instance: Route): Observable<any> {
+    if (instance && instance.prefix && instance.prefix.length > 0) {
+      return this.http.get(instance.prefix + '/management/threaddump');
+    }
+    return this.threadDump();
+  }
+}

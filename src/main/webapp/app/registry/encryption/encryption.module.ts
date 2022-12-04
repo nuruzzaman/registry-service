@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f4b4d9a461b5d20f70caccded3e38d623d2b30ba7e61bf193bc70164e7b0d9ba
-size 458
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { JHipsterRegistrySharedModule } from 'app/shared/shared.module';
+
+import { encryptionRoute } from './encryption.route';
+import { JhiEncryptionComponent } from './encryption.component';
+
+@NgModule({
+  imports: [JHipsterRegistrySharedModule, RouterModule.forChild([encryptionRoute])],
+  declarations: [JhiEncryptionComponent]
+})
+export class EncryptionModule {}

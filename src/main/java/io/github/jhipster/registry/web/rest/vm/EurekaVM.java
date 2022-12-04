@@ -1,3 +1,30 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ecc26bc0fb8dba733438c653a89600d27e35adc348681e8a6539131faee85945
-size 672
+package io.github.jhipster.registry.web.rest.vm;
+
+import java.util.List;
+import java.util.Map;
+
+/**
+ * View Model object for representing Eureka applications list.
+ */
+public class EurekaVM {
+
+    private List<Map<String, Object>> applications;
+
+    private Map<String, Object> status;
+
+    public List<Map<String, Object>> getApplications() {
+        return applications;
+    }
+
+    public void setApplications(List<Map<String, Object>> applications) {
+        this.applications = applications;
+    }
+
+    public Map<String, Object> getStatus() {
+        return status;
+    }
+
+    public void setStatus(Map<String, Object> status) {
+        this.status = status;
+    }
+}
