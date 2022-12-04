@@ -1,4 +1,4 @@
-# Service Registry
+# Registry Service
 
 This is the registry service, based on [Spring Cloud Netflix](https://cloud.spring.io/spring-cloud-netflix/), [Eureka](https://github.com/Netflix/eureka) and [Spring Cloud Config](https://cloud.spring.io/spring-cloud-config/).
 
