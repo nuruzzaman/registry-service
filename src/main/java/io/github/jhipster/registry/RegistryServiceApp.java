@@ -30,22 +30,21 @@ import java.util.Collection;
 @EnableConfigurationProperties({ApplicationProperties.class, ConfigServerConfig.class})
 @EnableDiscoveryClient
 @EnableZuulProxy
-public class JHipsterRegistryApp implements InitializingBean {
+public class RegistryServiceApp implements InitializingBean {
 
-    private static final Logger log = LoggerFactory.getLogger(JHipsterRegistryApp.class);
+    private static final Logger log = LoggerFactory.getLogger(RegistryServiceApp.class);
 
     private final Environment env;
 
-    public JHipsterRegistryApp(Environment env) {
+    public RegistryServiceApp(Environment env) {
         this.env = env;
     }
 
     /**
-     * Initializes JHipsterRegistry.
+     * Initializes Registry Service.
      * <p>
      * Spring profiles can be configured with a program argument --spring.profiles.active=your-active-profile
      * <p>
-     * You can find more information on how profiles work with JHipster on <a href="https://www.jhipster.tech/profiles/">https://www.jhipster.tech/profiles/</a>.
      */
     @Override
     public void afterPropertiesSet() throws Exception {
@@ -66,7 +65,7 @@ public class JHipsterRegistryApp implements InitializingBean {
      * @param args the command line arguments.
      */
     public static void main(String[] args) {
-        SpringApplication app = new SpringApplication(JHipsterRegistryApp.class);
+        SpringApplication app = new SpringApplication(RegistryServiceApp.class);
         DefaultProfileUtil.addDefaultProfile(app);
         Environment env = app.run(args).getEnvironment();
         logApplicationStartup(env);

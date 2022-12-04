@@ -1,7 +1,7 @@
 package io.github.jhipster.registry.web.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.jhipster.registry.JHipsterRegistryApp;
+import io.github.jhipster.registry.RegistryServiceApp;
 import io.github.jhipster.registry.security.jwt.TokenProvider;
 import io.github.jhipster.registry.web.rest.errors.ExceptionTranslator;
 import io.github.jhipster.registry.web.rest.vm.LoginVM;
@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest(classes = JHipsterRegistryApp.class)
+@SpringBootTest(classes = RegistryServiceApp.class)
 public class UserJWTControllerIT {
 
     @MockBean

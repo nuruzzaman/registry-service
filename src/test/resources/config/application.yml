@@ -11,7 +11,7 @@
 
 spring:
   application:
-    name: JHipsterRegistry
+    name: RegistryService
   cloud:
     config:
       enabled: false

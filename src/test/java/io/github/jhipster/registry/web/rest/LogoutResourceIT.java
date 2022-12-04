@@ -1,6 +1,6 @@
 package io.github.jhipster.registry.web.rest;
 
-import io.github.jhipster.registry.JHipsterRegistryApp;
+import io.github.jhipster.registry.RegistryServiceApp;
 import io.github.jhipster.registry.config.TestSecurityConfiguration;
 import io.github.jhipster.registry.security.AuthoritiesConstants;
 import org.junit.jupiter.api.BeforeEach;
@@ -34,7 +34,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * Integration tests for the {@link LogoutResource} REST controller.
  */
-@SpringBootTest(classes = {JHipsterRegistryApp.class, TestSecurityConfiguration.class})
+@SpringBootTest(classes = {RegistryServiceApp.class, TestSecurityConfiguration.class})
 @ActiveProfiles("oauth2")
 public class LogoutResourceIT {
 

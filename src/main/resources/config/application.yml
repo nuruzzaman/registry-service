@@ -12,7 +12,7 @@
 
 spring:
   application:
-    name: jhipster-registry
+    name: registry-service
   jmx:
     enabled: false
   main:
@@ -43,7 +43,7 @@ spring:
       console-available: true
 
 logging:
-  file: target/jhipster-registry.log
+  file: target/registry-service.log
 
 ribbon:
   eureka:
@@ -149,17 +149,17 @@ eureka:
     peer-node-read-timeout-ms: 1000
   dashboard:
     path: /registry
-  datacenter: JHipster-DataCenter
-  environment: JHipster-Environment
+  datacenter: Zink-DataCenter
+  environment: Zink-Environment
 
 # ===================================================================
 # Application specific properties
 # Add your own application properties here, see the ApplicationProperties class
-# to have type-safe configuration, like in the JHipsterProperties above
+# to have type-safe configuration, like in the properties above
 # ===================================================================
 jhipster:
   clientApp:
-    name: 'JHipsterRegistry'
+    name: 'RegistryServiceApp'
   # By default CORS is disabled. Uncomment to enable.
   # cors:
   #     allowed-origins: "*"

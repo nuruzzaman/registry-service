@@ -66,7 +66,7 @@ describe('Component Tests', () => {
           status: 400,
           statusText: 'Bad Request',
           error: {
-            type: 'https://www.jhipster.tech/problem/constraint-violation',
+            type: 'https://www.data2ml.com.au/problem/constraint-violation',
             title: 'Bad Request',
             status: 400,
             path: '/api/foos',
@@ -99,7 +99,7 @@ describe('Component Tests', () => {
           status: 400,
           statusText: 'Bad Request',
           error: {
-            type: 'https://www.jhipster.tech/problem/constraint-violation',
+            type: 'https://www.data2ml.com.au/problem/constraint-violation',
             title: 'Method argument not valid',
             status: 400,
             path: '/api/foos',

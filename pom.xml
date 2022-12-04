@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.github.jhipster.registry</groupId>
+    <groupId>com.au.data2ml</groupId>
     <artifactId>registry-service</artifactId>
     <version>6.0.2</version>
     <packaging>jar</packaging>
@@ -604,11 +604,11 @@
                     <configuration>
                         <rules>
                             <requireMavenVersion>
-                                <message>You are running an older version of Maven. JHipster requires at least Maven ${maven.version}</message>
+                                <message>You are running an older version of Maven. It requires at least Maven ${maven.version}</message>
                                 <version>[${maven.version},)</version>
                             </requireMavenVersion>
                             <requireJavaVersion>
-                                <message>You are running an incompatible version of Java. JHipster supports JDK 8 to 13.</message>
+                                <message>You are running an incompatible version of Java. It supports JDK 8 to 13.</message>
                                 <version>[1.8,14)</version>
                             </requireJavaVersion>
                         </rules>

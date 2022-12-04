@@ -1,6 +1,6 @@
 package io.github.jhipster.registry.security.uaa;
 
-import io.github.jhipster.registry.JHipsterRegistryApp;
+import io.github.jhipster.registry.RegistryServiceApp;
 import io.github.jhipster.registry.config.UaaTestSecurityConfiguration;
 import io.github.jhipster.registry.security.AuthoritiesConstants;
 import org.junit.jupiter.api.BeforeEach;
@@ -34,7 +34,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
 
-@SpringBootTest(classes = {JHipsterRegistryApp.class, UaaTestSecurityConfiguration.class})
+@SpringBootTest(classes = {RegistryServiceApp.class, UaaTestSecurityConfiguration.class})
 @TestPropertySource(properties = "eureka.client.fetch-registry: false")
 @ActiveProfiles("uaa")
 public class UaaAuthorizationHeaderUtilIT {

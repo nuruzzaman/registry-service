@@ -1,6 +1,6 @@
 package io.github.jhipster.registry.web.rest;
 
-import io.github.jhipster.registry.JHipsterRegistryApp;
+import io.github.jhipster.registry.RegistryServiceApp;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * Integration tests for the {@link ClientForwardController} REST controller.
  */
-@SpringBootTest(classes = JHipsterRegistryApp.class)
+@SpringBootTest(classes = RegistryServiceApp.class)
 public class ClientForwardControllerIT {
 
     private MockMvc restMockMvc;

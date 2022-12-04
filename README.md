@@ -21,9 +21,16 @@ To run the cloned repository;
 - For development run `./mvnw -Pdev,webpack` to just start in development or run `./mvnw` and run `npm install && npm start` for hot reload of client side code.
 - For production profile run `./mvnw -Pprod`
 
+## Create docker image
+
+- mvnw -ntp -Pprod verify jib:dockerBuild -DskipTests
+- mvnw package -Pprod verify jib:build -Djib.to.image=data2ml/registry-service:latest -Djib.to.auth.username=data2ml -Djib.to.auth.password=* -DskipTests
+
+
+
 ## GitHub Commit 
 
->git add README.md
->git commit -m "first commit"
->git branch -M main
->git push -u origin main
+>`git add README.md`
+>`git commit -m "first commit"`
+>`git branch -M main`
+>`git push -u origin main`

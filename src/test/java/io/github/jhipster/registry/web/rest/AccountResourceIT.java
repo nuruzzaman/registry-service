@@ -1,6 +1,6 @@
 package io.github.jhipster.registry.web.rest;
 
-import io.github.jhipster.registry.JHipsterRegistryApp;
+import io.github.jhipster.registry.RegistryServiceApp;
 import io.github.jhipster.registry.security.AuthoritiesConstants;
 import io.github.jhipster.registry.web.rest.errors.ExceptionTranslator;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * Integration tests for the {@link AccountResource} REST controller.
  */
-@SpringBootTest(classes = JHipsterRegistryApp.class)
+@SpringBootTest(classes = RegistryServiceApp.class)
 public class AccountResourceIT {
 
     @Autowired
