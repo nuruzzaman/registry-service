@@ -23,8 +23,8 @@ To run the cloned repository;
 
 ## Create docker image
 
-- mvnw -ntp -Pprod verify jib:dockerBuild -DskipTests
-- mvnw package -Pprod verify jib:build -Djib.to.image=data2ml/registry-service:latest -Djib.to.auth.username=data2ml -Djib.to.auth.password=* -DskipTests
+- `mvnw -ntp -Pprod verify jib:dockerBuild -DskipTests`
+- `mvnw package -Pprod verify jib:build -Djib.to.image=data2ml/registry-service:latest -Djib.to.auth.username=data2ml -Djib.to.auth.password=* -DskipTests`
 
 
 
